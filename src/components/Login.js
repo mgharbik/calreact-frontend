@@ -24,7 +24,7 @@ export default class Login extends React.Component {
     })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <h2>Sign in</h2>
