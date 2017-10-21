@@ -16,7 +16,7 @@ export default class AppointmentForm extends React.Component {
   static formValidations = {
     title: [
       (s) => { return validations.checkMinLength(s, 3) },
-      (s) => { return validations.checkMaxLength(s, 10) }
+      (s) => { return validations.checkMaxLength(s, 50) }
     ],
     appt_time: [
       (t) => { return validations.timeShouldBeInTheFuture(t) }
