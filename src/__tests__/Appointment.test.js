@@ -4,6 +4,7 @@ import Appointment from '../components/Appointment';
 import { BrowserRouter as Router } from 'react-router-dom'
 import { configure, shallow, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16';
+import renderer from 'react-test-renderer';
 
 configure({ adapter: new Adapter() });
 
@@ -22,5 +23,11 @@ describe ('render', () => {
     const appointment = mount(<Router><Appointment appointment={{id: 1, title: 'Team standup meeting', appt_time: new Date('04/11/2017, 12:00:00')}} /></Router>);
     const appt_time = <p>April 11 2017, 12:00:00 pm</p>;
     expect(appointment.contains(appt_time)).toEqual(true);
+  })
+
+  it('renders appointment correctly', () => {
+    const appointment = renderer.create(<Router><Appointment appointment={{id: 1, title: 'Team standup meeting', appt_time: new Date('04/11/2017, 12:00:00')}} /></Router>);
+    const tree = appointment.toJSON();
+    expect(tree).toMatchSnapshot();
   })
 })
