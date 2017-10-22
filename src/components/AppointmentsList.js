@@ -1,14 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Appointment from './Appointment'
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
 export const AppointmentsList = ({appointments}) =>
   <div>
-    {appointments.map(function(appointment) {
-      return (
-        <Appointment appointment={appointment} key={appointment.id} />
-      )
-    })}
+    <CSSTransitionGroup
+      transitionName="appointment"
+      transitionEnterTimeOut={500} >
+      {appointments.map(function(appointment) {
+        return (
+          <Appointment appointment={appointment} key={appointment.id} />
+        )
+      })}
+    </CSSTransitionGroup>  
   </div>
 
 AppointmentsList.propTypes = {
